@@ -9,6 +9,20 @@ function App() {
   const [data, setData] = useState({})
   const [location,setLocation] = useState('')
 
+  const dateBuilder = (d) => {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    
+    let day = days[d.getDay()];
+    let date = d.getDate();
+    let month = months[d.getMonth()]
+    let year = d.getFullYear();
+
+    return  `${day} ${date} ${month} ${year}`
+
+  
+  }
+
   const api = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=99f0591a5302fc3b51e9686f8c4e7047`
   
   const searchLocation = (event) => {
@@ -35,10 +49,13 @@ function App() {
       <div className="container">
         <div className="top">
           <div className="location">
-            <p>{data.name}</p>
+           <h2>{data.name}</h2>
           </div>
           <div className="temp">
            {data.main ? <h1>{data.main.temp.toFixed()}℃</h1>: null }
+          </div>
+          <div className="date">
+            <p>{dateBuilder(new Date())}</p>
           </div>
           <div className="description">
             {data.weather ? <p>{data.weather[0].main}</p> : null}
