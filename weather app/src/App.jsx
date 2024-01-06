@@ -33,6 +33,9 @@ function App() {
         setData(response.data)
         console.log(response.data)
       })
+      .catch((err)=>{
+        console.err("Error getting Data", err.message)
+      })
       setLocation('')
     }
   }
