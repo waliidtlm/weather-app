@@ -2,7 +2,6 @@ import { useState } from 'react'
 import React from 'react'
 import axios from "axios"
 import './style.css'
-import { BsCloudsFill } from "react-icons/bs";
 import { IoRainyOutline } from "react-icons/io5";
 import { BsClouds } from "react-icons/bs";
 import { TiWeatherSunny } from "react-icons/ti";
@@ -26,7 +25,7 @@ function App() {
 
   
 
-  const api = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=99f0591a5302fc3b51e9686f8c4e7047`
+  const api = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${import.meta.env.VITE_KEY}`;
   
   const searchLocation = (event) => {
     if(event.key==="Enter") {
