@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { DateTime } from 'luxon';
 import React from 'react'
 import axios from "axios"
 import './style.css'
@@ -8,8 +9,10 @@ import { TiWeatherSunny } from "react-icons/ti";
 import { IoIosSnow } from "react-icons/io";
 
 function App() {
-  const [data, setData] = useState({})
-  const [location,setLocation] = useState('')
+  const [data, setData] = useState({});
+  const [location, setLocation] = useState('');
+  const [localTime, setLocalTime] = useState('');
+  const [timeZone, setTimeZone] = useState('');
 
   const dateBuilder = (d) => {
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -26,19 +29,43 @@ function App() {
   
 
   const api = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${import.meta.env.VITE_KEY}`;
-  
-  const searchLocation = (event) => {
-    if(event.key==="Enter") {
-      axios.get(api).then((response) => {
-        setData(response.data)
-        console.log(response.data)
-      })
-      .catch((err)=>{
-        console.err("Error getting Data", err.message)
-      })
-      setLocation('')
+
+  const searchLocation = async (event) => {
+    if (event.key === 'Enter') {
+      try {
+        const response = await axios.get(api);
+        setData(response.data);
+
+        if (response.data !== 'undefined') {
+          const timestamp = response.data.dt;
+          console.log('timezone',data.timezone)
+          const cityTime = DateTime.fromSeconds(timestamp);
+
+          // Update local time
+          setLocalTime(cityTime.toLocaleString(DateTime.TIME_SIMPLE));
+        }
+      } catch (err) {
+        console.error('Error getting Data', err.message);
+      } 
+        setLocation('');
+      
     }
-  }
+  };
+  
+  useEffect(() => {
+    if (data.dt && timeZone) {
+      const timestamp = data.dt;
+      const cityTime = DateTime.fromSeconds(timestamp);
+
+      const options = { timeZone: timeZone, hour12: false };
+      const formattedTime = cityTime.toLocaleString(DateTime.TIME_SIMPLE, options);
+
+      setLocalTime(formattedTime);
+    }
+  }, [data, timeZone]);
+
+
+
   const renderWeatherIcon = () => {
     if (data.weather) {
       const currentWeather = data.weather[0].main
@@ -91,6 +118,17 @@ function App() {
             {data.weather ? <p>{data.weather[0].description}</p> : null}
           </div>
         </div>
+
+        <div className="time">
+          <div>
+          <h1 className='hours'>{localTime.split(':')[0]}</h1>
+          </div>
+          :
+          <div >
+          <h2 className='minutes'>{localTime.split(':')[1]}</h2>
+          </div>
+        </div>
+
 
         <div className="bottom">
           <div className="feels">
