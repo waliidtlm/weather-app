@@ -62,6 +62,7 @@ h3{
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 4px 3px 12px 0px black;
+    backdrop-filter: blur(1rem);
 }
 .weather-icon{
     width: 80%;
@@ -98,7 +99,27 @@ input{
     transform-origin: 0 0;
     transform: rotate(269deg);
 }
-
+.time{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width:100%;
+    height: 120px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.1);
+    font-size: 5rem;
+    gap: 10px;
+}
+.hours{
+    display: flex;
+    align-items: center;
+}
+.minutes{
+    display: flex;
+    font-size: 3.5rem;
+    height: 100px;
+    align-items: center;
+}
 .bottom{
     display: flex;
     justify-content: space-evenly;
