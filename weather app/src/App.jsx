@@ -73,7 +73,14 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className={
+      (weatherData.weather ? 
+        (weatherData.weather[0].main === 'Snow' ? 'app snow' :
+        (weatherData.weather[0].main === 'Clear' ? 'app sunny' :
+        (weatherData.weather[0].main === 'Rain' ? 'app rain' :
+        (weatherData.weather[0].main === 'Clouds' ? 'app cloud' : 'app'))))
+      : 'app')
+    }>
       <div className="search">
         <input
           type="text"
