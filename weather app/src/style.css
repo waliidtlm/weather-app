@@ -11,7 +11,7 @@ p{
     font-size: 1.3rem;
 }
 h1{
-    font-size: 7rem;
+    font-size: 6rem;
 
 }
 h2{
@@ -25,7 +25,7 @@ h3{
 .location{
     display: flex;
     border-radius: 12px;
-    background-color: #ededed1b;
+    background: rgba(0,0,0,0.4);
     width:fit-content;
     padding: 0 15px;
 }
@@ -40,7 +40,7 @@ h3{
 
 .app::before{
     content:'';
-    background: url("./assets/background.jpg") no-repeat center center/cover;
+    background: url("./assets/wallpaper.jpg") no-repeat center/cover;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -49,25 +49,24 @@ h3{
     z-index: -1;
 }
 .container{
-    max-width: 700px;
-    height: 800px;
+    max-width: 500px;
+    height: fit-content;
     margin: auto;
-    padding: 0 1rem;
     position: relative;
-    top:3%;
     display: flex;
+    top:3%;
     flex-direction: column;
-    justify-content: space-between;
-    background-color: rgba(0,0,0,0.4);
+    background-color: #ededed1b;
     border-radius: 15px;
     padding: 2rem;
     box-shadow: 4px 3px 12px 0px black;
     backdrop-filter: blur(1rem);
+    
 }
 .weather-icon{
-    width: 80%;
+    width: 60%;
     height: 150px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.4);
     border-radius: 15px;
     display: flex;
     place-content: center;
@@ -81,8 +80,8 @@ input{
     font-size: 1.3rem;
     border-radius: 30px;
     border: 1px solid #ededed;
-    background: rgba(255,255,255,0.1);
     color: #ededed;
+    background: rgba(0,0,0,0.4)
     
 }
 ::placeholder {
@@ -106,7 +105,7 @@ input{
     width:100%;
     height: 120px;
     border-radius: 12px;
-    background: rgba(255,255,255,0.1);
+    background:rgba(0,0,0,0.4);
     font-size: 5rem;
     gap: 10px;
 }
@@ -128,8 +127,11 @@ input{
     margin: 1rem auto;
     padding: 1rem;
     border-radius: 12px;
-    background-color: #ededed1b;
+    background-color: rgba(0,0,0,0.4);
 }
 .bold{
     font-weight: 800;
+}
+.details{
+   margin-top: 10px;
 }

@@ -40,7 +40,6 @@ function App() {
           // Update local time and timezone using coordinates from the second response
           const timestamp = weatherResponse.data.dt;
           const timezoneOffset = weatherResponse.data.timezone;
-          console.log('timezoneOffset',timezoneOffset)
 
           const cityTime = DateTime.fromSeconds(timestamp, {
             zone: `UTC${timezoneOffset >= 0 ? "+" : ""}${timezoneOffset / 3600}`,
