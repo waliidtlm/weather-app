@@ -59,13 +59,13 @@ function App() {
       const currentWeather = weatherData.weather[0].main;
       switch (currentWeather) {
         case "Clouds":
-          return <BsClouds size={150} />;
+          return <BsClouds size={120} />;
         case "Clear":
-          return <TiWeatherSunny size={150} />;
+          return <TiWeatherSunny size={120} />;
         case "Rain":
-          return <IoRainyOutline size={150} />;
+          return <IoRainyOutline size={120} />;
         case "Snow":
-          return <IoIosSnow size={150} />;
+          return <IoIosSnow size={120} />;
         default:
           return null;
       }
@@ -124,7 +124,7 @@ function App() {
           </div>
           :
           <div>
-            <h2 className="minutes">{localTime.split(":")[1]}</h2>
+            <h1 className="minutes">{localTime.split(":")[1]}</h1>
           </div>
         </div>
 
