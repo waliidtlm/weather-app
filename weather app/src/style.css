@@ -79,8 +79,8 @@ h3{
     
 }
 .weather-icon{
-    width: 60%;
-    height: 150px;
+    width: 40%;
+    height: 130px;
     background: rgba(0,0,0,0.4);
     border-radius: 15px;
     display: flex;
@@ -115,24 +115,12 @@ input{
 }
 .time{
     display: flex;
-    justify-content:center;
-    align-items: center;
-    width:100%;
-    height: 120px;
+    place-content: center;
+    width:70%;
     border-radius: 12px;
     background:rgba(0,0,0,0.4);
     font-size: 5rem;
-    gap: 10px;
-}
-.hours{
-    display: flex;
-    align-items: center;
-}
-.minutes{
-    display: flex;
-    font-size: 3.5rem;
-    height: 100px;
-    align-items: center;
+    gap: 5px;
 }
 .bottom{
     display: flex;
